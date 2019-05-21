@@ -31,8 +31,10 @@ main {
 }
 
 button {
-  border: unset;
-  width: 5rem;
+  border: 1px solid darkgreen;
+  width: 8rem;
+  height: 4rem;
   background-color: forestgreen;
   color: white;
+  margin: 5px;
 }

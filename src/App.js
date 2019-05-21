@@ -32,8 +32,10 @@ function App() {
       <main>
         <ShipmentList shipments={shipments}/>
         <TruckList trucks={trucks}/>
-        <button onClick={handleClick}>Sort Shipments</button>
-        <button onClick={reset}>Reset</button>
+        <div className="buttons">
+          <button onClick={handleClick}>Load Shipments</button>
+          <button onClick={reset}>Reset</button>
+        </div>
       </main>
     </div>
   );
