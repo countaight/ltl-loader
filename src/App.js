@@ -1,24 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
+import TruckList from './Components/Truck/TruckList';
+import TRUCKS from './Components/Truck/trucks';
+import ShipmentList from './Components/Shipment/ShipmentList';
+import SHIPMENTS from './Components/Shipment/shipments';
+import loadShipments from './utils/load_shipments';
+
 function App() {
+  // Using hooks to set state in functional components
+  const [shipments, setShipments] = useState(SHIPMENTS);
+  const [trucks, setTrucks] = useState(TRUCKS);
+
+  function handleClick() {
+    const {shipments: newShipments, trucks: newTrucks} = loadShipments(shipments, trucks);
+    setShipments(newShipments);
+    setTrucks(newTrucks);
+  }
+
+  function reset() {
+    setShipments(SHIPMENTS);
+    TRUCKS.forEach(truck => truck.emptyTruck());
+    setTrucks(TRUCKS);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Mastery Code Challenge</h1>
       </header>
+      <main>
+        <ShipmentList shipments={shipments}/>
+        <TruckList trucks={trucks}/>
+        <button onClick={handleClick}>Sort Shipments</button>
+        <button onClick={reset}>Reset</button>
+      </main>
     </div>
   );
 }

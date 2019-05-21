@@ -1,0 +1,11 @@
+.truck {
+	border: solid 5px red;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	border-radius: 5px;
+	box-sizing: border-box;
+}
+
+.empty {
+	border: solid 5px blue;
+}
